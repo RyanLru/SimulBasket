@@ -40,3 +40,9 @@ class Joueur:
         self.tir_a_2_points_reussi = 0
         self.tir_a_3_points_reussi = 0
 
+        # Position du joueur sur le terrain
+        self.x = 0
+        self.y = 0
+        self.z = 0
+
+

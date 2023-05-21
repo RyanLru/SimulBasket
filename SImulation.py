@@ -4,12 +4,16 @@
 
 from pygame import*
 
+import Debug
+from Placement import Placement
+
 # Initialisation de la fenêtre par une fonction
 def init_fenetre():
     fenetre = display.set_mode((1820,980))
     display.set_caption("Basketball")
-
     return fenetre
+
+
 
 # Fonction de boucle de jeu
 def boucle_jeu(fenetre):
@@ -22,6 +26,7 @@ def boucle_jeu(fenetre):
     continuer = True
     # Boucle de jeu
     while continuer:
+        # On affiche les joueurs
         for evenement in event.get():
             if evenement.type == QUIT:
                 continuer = False
