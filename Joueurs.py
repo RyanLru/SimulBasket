@@ -2,7 +2,7 @@
 
 class Joueur:
 
-    def __init__(self, nom, prenom, taille, poids, poste, vitesse, agilite, force, precision, endurance, moral, sante, equipe):
+    def __init__(self, nom, prenom, taille, poids, poste, vitesse, agilite, force, precision, endurance, moral, sante, equipe, x, y, z, photo):
 
         # Attributs principaux
         self.nom = nom
@@ -41,8 +41,11 @@ class Joueur:
         self.tir_a_3_points_reussi = 0
 
         # Position du joueur sur le terrain
-        self.x = 0
-        self.y = 0
-        self.z = 0
+        self.x = x
+        self.y = y
+        self.z = z
+
+        # Photo du joueur
+        self.photo = photo
 
 
