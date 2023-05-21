@@ -2,7 +2,7 @@
 
 class Joueur:
 
-    def __init__(self, nom, prenom, taille, poids, poste, vitesse, agilite, force, precision, endurance, moral, sante, equipe, x, y, z, photo):
+    def __init__(self, nom, prenom, taille, poids, poste, vitesse, agilite, force, precision, endurance, moral, sante, equipe, x, y, z):
 
         # Attributs principaux
         self.nom = nom
@@ -10,13 +10,13 @@ class Joueur:
         self.taille = taille
         self.poids = poids
         self.poste = poste
-        self.vitesse = vitesse
-        self.agilite = agilite
-        self.force = force
-        self.precision = precision
-        self.endurance = endurance
-        self.moral = moral
-        self.sante = sante
+        self.vitesse = float(vitesse)
+        self.agilite = float(agilite)
+        self.force = float(force)
+        self.precision = float(precision)
+        self.endurance = float(endurance)
+        self.moral = float(moral)
+        self.sante = float(sante)
         self.equipe = equipe
 
         # Attributs secondaires
@@ -45,7 +45,28 @@ class Joueur:
         self.y = y
         self.z = z
 
-        # Photo du joueur
-        self.photo = photo
+
+
+
+    # Setters
+    def set_x(self, x):
+        self.x = x
+
+    def set_y(self, y):
+        self.y = y
+
+    def set_z(self, z):
+        self.z = z
+
+    # Getters
+    def get_x(self):
+        return self.x
+
+    def get_y(self):
+        return self.y
+
+    def get_z(self):
+        return self.z
+
 
 

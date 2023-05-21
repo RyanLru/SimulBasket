@@ -4,8 +4,8 @@
 
 from pygame import*
 
-import Debug
-from Placement import Placement
+import Jeu
+import Placement
 
 # Initialisation de la fenêtre par une fonction
 def init_fenetre():
@@ -13,10 +13,22 @@ def init_fenetre():
     display.set_caption("Basketball")
     return fenetre
 
+def Actualisation(fenetre, equipe1, equipe2):
+    # On affiche les joueurs en fonction de le coordonées
+    for i in range(5):
+        draw.circle(fenetre, (255, 255, 255), (equipe1[i].get_x(), equipe1[i].get_y()), 20)
+        draw.circle(fenetre, (255, 255, 255), (equipe2[i].get_x(), equipe2[i].get_y()), 20)
+    display.flip()
 
 
 # Fonction de boucle de jeu
 def boucle_jeu(fenetre):
+    equipe1 = Jeu.Equipe('Golden States')
+    equipe2 = Jeu.Equipe('Lakers')
+
+    Placement.placement(equipe1, 1)
+    Placement.placement(equipe2, 2)
+
     # Initialisation des variables
     fond = image.load("Data/Background.jpg").convert()
     # On adapte l'image de fond à la taille de la fenêtre
@@ -26,6 +38,7 @@ def boucle_jeu(fenetre):
     continuer = True
     # Boucle de jeu
     while continuer:
+        Actualisation(fenetre, equipe1, equipe2)
         # On affiche les joueurs
         for evenement in event.get():
             if evenement.type == QUIT:
