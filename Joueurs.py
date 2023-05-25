@@ -68,5 +68,61 @@ class Joueur:
     def get_z(self):
         return self.z
 
+    def get_nom(self):
+        return self.nom
+
+    def get_prenom(self):
+        return self.prenom
+
+    def get_taille(self):
+        return self.taille
+
+    def get_poids(self):
+        return self.poids
+
+    def get_poste(self):
+        return self.poste
+
+    def get_vitesse(self):
+        return self.vitesse
+
+    def get_agilite(self):
+        return self.agilite
+
+    def get_force(self):
+        return self.force
+
+    def get_precision(self):
+        return self.precision
+
+    def get_endurance(self):
+        return self.endurance
+
+    def get_moral(self):
+        return self.moral
+
+    def get_sante(self):
+        return self.sante
+
+    def get_equipe(self):
+        return self.equipe
+
+    def get_vitesse_moyenne(self):
+        return self.vitesse_moyenne
+
+    def get_precision_moyenne(self):
+        return self.precision_moyenne
+
+    def get_endurance_moyenne(self):
+        return self.endurance_moyenne
+
+    def get_moral_moyen(self):
+        return self.moral_moyen
+
+    def get_score(self):
+        return self.score
+
+
+
 
 
