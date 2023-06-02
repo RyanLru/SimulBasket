@@ -16,7 +16,13 @@ def init_fenetre():
     display.set_caption("Basketball")
     return fenetre
 
-def Actualisation(fenetre, equipe1, equipe2, Balle, temps_restant):
+def Actualisation(fenetre, equipe1, equipe2, Balle, temps_restant, score1, score2):
+    fond = image.load("Data/Background.jpg").convert()
+    # On adapte l'image de fond à la taille de la fenêtre
+    fond = transform.scale(fond, (1820, 980))
+    fenetre.blit(fond, (0, 0))
+    display.flip()
+
     # On affiche les joueurs en fonction de le coordonées
     for i in range(5):
         draw.circle(fenetre, (135,206,235), (equipe1[i].get_x(), equipe1[i].get_y()), 20)
@@ -27,9 +33,21 @@ def Actualisation(fenetre, equipe1, equipe2, Balle, temps_restant):
     draw.circle(fenetre, (255,95,0), (Balle.get_x(), Balle.get_y()), 10)
 
     # On affiche le temps restant
-    text = font.render(str(temps_restant), True, (255,255,255))
-    fenetre.blit(text, (910, 10))
+    from pygame import font
 
+    # On initialise la police
+    font.init()
+    font = font.Font(None, 50)
+    text = font.render(str(score1)+ "  " +str(temps_restant//60)+ " : "+str(temps_restant%60)+ "  "+ str(score2), 1, (255,255,255))
+    fenetre.blit(text, (820, 10))
+    display.flip()
+
+"""
+    # On cherche a localiser la position des panier
+    draw.circle(fenetre, (255,255,255), (200, 490), 10)
+    draw.circle(fenetre, (255,255,255), (1620, 490), 10)
+    display.flip()
+"""
 
 
 # Fonction de boucle de jeu
@@ -41,6 +59,12 @@ def boucle_jeu(fenetre):
     Balle = Ballon()
     Balle.set_x(910)
     Balle.set_y(490)
+
+    # Compteur de temps
+    temps_restant = 15*60
+    score1 = 0
+    score2 = 0
+
 
 
     Placement.placement(equipe1, 1)
@@ -58,16 +82,12 @@ def boucle_jeu(fenetre):
         Balle.set_x(equipe2[0].get_x())
         Balle.set_y(equipe2[0].get_y())
 
-    # Initialisation des variables
-    fond = image.load("Data/Background.jpg").convert()
-    # On adapte l'image de fond à la taille de la fenêtre
-    fond = transform.scale(fond,(1820,980))
-    fenetre.blit(fond,(0,0))
-    display.flip()
     continuer = True
     # Boucle de jeu
     while continuer:
-        Actualisation(fenetre, equipe1, equipe2, Balle, 12)
+        Actualisation(fenetre, equipe1, equipe2, Balle, temps_restant,score1, score2)
+        time.wait(1000)
+        temps_restant -= 1
         # On affiche les joueurs
         for evenement in event.get():
             if evenement.type == QUIT:
@@ -84,5 +104,3 @@ def boucle_jeu(fenetre):
 def main():
     fenetre = init_fenetre()
     boucle_jeu(fenetre)
-
-main()
